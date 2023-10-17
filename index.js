@@ -2,8 +2,9 @@ const model = new Model({
    onPostChanged: handleModelPostsChanged
 });
 
-model.addPost('1', '2');
-model.addPost('Заголовок', 'Описание');
+const view = new View();
+
+view.renderPosts(model.getPosts());
 
 function handleModelPostsChanged(posts) {
    console.log(posts);

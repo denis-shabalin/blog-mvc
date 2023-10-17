@@ -1,6 +1,9 @@
 class Model {
    constructor({onPostChanged}) {
-      this.posts = [];
+      this.posts = [{
+         title: 'Заголовок',
+         description: 'Описание'
+      }];
       this.onPostChanged = onPostChanged;
    }
 
