@@ -1,3 +1,5 @@
+const app = new Controller();
+
 const model = new Model({
    onPostChanged: handleModelPostsChanged
 });
