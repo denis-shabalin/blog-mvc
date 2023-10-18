@@ -1,10 +1,7 @@
 class Model {
-   constructor({onPostChanged}) {
-      this.posts = [{
-         title: 'Заголовок',
-         description: 'Описание'
-      }];
-      this.onPostChanged = onPostChanged;
+   constructor({ onPostsChanged }) {
+      this.posts = [];
+      this.onPostsChanged = onPostsChanged;
    }
 
    addPost(title, description) {
@@ -13,7 +10,7 @@ class Model {
          description
       });
 
-      this.onPostChanged(this.posts);
+      this.onPostsChanged(this.posts); // при изменение данных в модели вызывается оповещение
    }  
 
    getPosts() {
