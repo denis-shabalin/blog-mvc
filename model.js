@@ -7,7 +7,8 @@ class Model {
    addPost(title, description) {
       this.posts.push({
          title,
-         description
+         description,
+         timestamp: Date.now()
       });
 
       this.onPostsChanged(this.posts); // при изменение данных в модели вызывается оповещение

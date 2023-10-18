@@ -7,7 +7,7 @@ class View {
          
       this.onNewPost = onNewPost;
 
-      this.btnNode.addEventListener('click', this.handleBtnClick)
+      this.btnNode.addEventListener('click', this._handleBtnClick)
    }
 
    renderPosts(posts) {
@@ -16,6 +16,7 @@ class View {
       posts.forEach(post => {
          this.postsNode.innerHTML += `
          <div>
+            <p>${this._buildDateString(post.timestamp)}</p>
             <p>${post.title}</p>
             <p>${post.description}</p>
          </div>
@@ -23,10 +24,16 @@ class View {
       });
    }
 
-   handleBtnClick = () => {
+   _handleBtnClick = () => {
       const title = this.titleInputNode.value;
       const desciption = this.descriptionInputNode.value;
 
       this.onNewPost(title, desciption); //оповещение о добавление нового поста
+   }
+
+   _buildDateString(timestamp) {
+      const date = new Date(timestamp);
+
+      return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()} `;
    }
 }
