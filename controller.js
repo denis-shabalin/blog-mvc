@@ -9,12 +9,12 @@ class Controller {
       });
    }
 
-   handleModelPostsChanged = (posts) => { // вызов метода как только в модели меняются посты(реакция на изменнения)
-      this.view.renderPosts(posts); //внутри отображения вызвать render post
+   handleModelPostsChanged = (posts, isError) => { // вызов метода как только в модели меняются посты(реакция на изменнения)
+      this.view.render(posts, isError); //внутри отображения вызвать render post
    }
 
-   handleViewNewPost = (title, desciption) => { // обработка нового поста в отображение
-      this.model.addPost(title, desciption); // в Model нужно добавить новый пост(обновление модели)
+   handleViewNewPost = (title, description) => { // обработка нового поста в отображение
+      this.model.addPost(title, description); // в Model нужно добавить новый пост(обновление модели)
    }
 }
 

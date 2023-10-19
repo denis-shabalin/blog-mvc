@@ -4,14 +4,19 @@ class View {
       this.titleInputNode = document.querySelector('#title-input');
       this.descriptionInputNode = document.querySelector('#description-input');
       this.btnNode = document.querySelector('#add-post-btn');
+      this.errorNode = document.querySelector('#error');
          
       this.onNewPost = onNewPost;
 
       this.btnNode.addEventListener('click', this._handleBtnClick)
    }
 
-   renderPosts(posts) {
-      this.postsNode.innerHTML = '';
+   render(posts, isError) {
+      this._clearView(); 
+
+      if (isError) {
+         this.errorNode.innerText = 'Ошибка ввода';
+      }
 
       posts.forEach(post => {
          this.postsNode.innerHTML += `
@@ -26,14 +31,19 @@ class View {
 
    _handleBtnClick = () => {
       const title = this.titleInputNode.value;
-      const desciption = this.descriptionInputNode.value;
+      const description = this.descriptionInputNode.value;
 
-      this.onNewPost(title, desciption); //оповещение о добавление нового поста
+      this.onNewPost(title, description); //оповещение о добавление нового поста
    }
 
    _buildDateString(timestamp) {
       const date = new Date(timestamp);
 
       return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()} `;
+   }
+
+   _clearView() {
+      this.postsNode.innerHTML = '';
+      this.errorNode.innerText = '';
    }
 }
