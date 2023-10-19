@@ -5,13 +5,13 @@ class Model {
       this.onPostsChanged = onPostsChanged;
    }
 
-   addPost(title, description) {
+   addPost(title, body) {
       if (this._isPostValid(title)) {
          this.isError = false;
 
          this.posts.push({
             title,
-            description,
+            body,
             timestamp: Date.now()
          });
       } else {
@@ -19,6 +19,12 @@ class Model {
       }
 
       this.onPostsChanged(this.posts, this.isError); // при изменение данных в модели вызывается оповещение
+   }
+
+   setPosts(posts) {
+      this.posts = posts;
+
+      this.onPostsChanged(this.posts, this.isError);
    }
 
    getPosts() {

@@ -2,7 +2,7 @@ class View {
    constructor({ onNewPost }) {
       this.postsNode = document.querySelector('#posts')
       this.titleInputNode = document.querySelector('#title-input');
-      this.descriptionInputNode = document.querySelector('#description-input');
+      this.bodyInputNode = document.querySelector('#body-input');
       this.btnNode = document.querySelector('#add-post-btn');
       this.errorNode = document.querySelector('#error');
          
@@ -23,7 +23,7 @@ class View {
          <div>
             <p>${this._buildDateString(post.timestamp)}</p>
             <p>${post.title}</p>
-            <p>${post.description}</p>
+            <p>${post.body}</p>
          </div>
          `; 
       });
@@ -31,9 +31,9 @@ class View {
 
    _handleBtnClick = () => {
       const title = this.titleInputNode.value;
-      const description = this.descriptionInputNode.value;
+      const body = this.bodyInputNode.value;
 
-      this.onNewPost(title, description); //оповещение о добавление нового поста
+      this.onNewPost(title, body); //оповещение о добавление нового поста
    }
 
    _buildDateString(timestamp) {
